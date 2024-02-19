@@ -31,7 +31,7 @@ Installation of this tool will require [RUST installation version](https://www.r
 To install this package via cargo, run the following command from a shell of choice:
 
 ```bash
-    cargo install --locked --git https://github.com/MinaMatta98/Bulk-Email-Cli-CLient.git
+cargo install --locked --git https://github.com/MinaMatta98/Bulk-Email-Cli-CLient.git
 ```
 
 <br/>
@@ -105,5 +105,5 @@ minamatta98@gmail.com,Email Template Tests,./templates/email.html,./example/send
 To send bulk emails from a csv file saved within `./example/example.csv`, run the following command from your shell of choice:
 
 ```bash
-cargo run --release -- bulk-email --csv-file "./example/example.csv"
+email-sender bulk-email --csv-file "./example/example.csv"
 ```
