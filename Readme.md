@@ -79,7 +79,7 @@ Send an email to `minamatta98@gmail.com` with the template saved within `./templ
 This is to also send an inline email attachment located within `./P-Circle.png` corrosponding to an inline content id of 2335.
 
 ```bash
-email-sender single-email --to-addr "minamatta98@gmail.com" --subject "Email Testing CLI" --email-template "./templates/email.html" --attachment-1-path "./P-Circle.png" --attachment-1-inline-content-id 2335
+email-sender single-email --to-addr "minamatta98@gmail.com" --subject "Email Testing CLI" --email-template "./templates/email.html" --attachment-1-path "./example/send_mail_7590.png" --attachment-1-inline-content-id 2335
 ```
 
 <br/>
@@ -98,7 +98,7 @@ _Note that unfilled fields must still be comma seperated_
 DeliveryAddress,Subject,RelativeEmailTemplatePath,Attachment1Path,Attachment1InlineContentId
 minamatta98@gmail.com,Email Template Tests,./templates/email.html,,
 deran_lockon@hotmail.com,Email Template Tests,./templates/email.html,./example/rust.pdf,
-minamatta98@gmail.com,Email Template Tests,./templates/email.html,./example/P-Circle.png,2335
+minamatta98@gmail.com,Email Template Tests,./templates/email.html,./example/send_mail_7590.png,2335
 ```
 
 To send bulk emails from a csv file saved within `./example/example.csv`, run the following command from your shell of choice:
