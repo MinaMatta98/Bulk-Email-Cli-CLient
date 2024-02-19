@@ -82,7 +82,7 @@ macro_rules! commands_struct {
 
                           #[serde(flatten)]
                           #[command(subcommand)]
-                          replacement_tokens: ReplacementTokens,
+                          replacement_tokens: Option<ReplacementTokens>,
                     },
                 }
             }
@@ -125,7 +125,7 @@ pub struct EmailInfo {
     /// Optional Inline File Attachment
     #[serde(flatten)]
     #[command(subcommand)]
-    pub attachment: AttachmentCommand,
+    pub attachment: Option<AttachmentCommand>,
 }
 
 commands_struct!(10);
@@ -148,7 +148,7 @@ mod test {
                 attachment_1_path,
                 attachment_1_inline_content_id,
                 ..
-            } = record.attachment;
+            } = record.attachment.unwrap();
 
             assert!(attachment_1_path.is_some());
             assert!(attachment_1_inline_content_id.is_some());

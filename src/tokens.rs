@@ -172,9 +172,9 @@ mod test {
 
             let AttachmentCommand::Attachments {
                 replacement_tokens, ..
-            } = record.attachment;
+            } = record.attachment.unwrap();
 
-            let ReplacementTokens::Token { replacement_tokens } = replacement_tokens;
+            let ReplacementTokens::Token { replacement_tokens } = replacement_tokens.unwrap();
 
             replace_html_file_substrings(replacement_tokens)?;
         }
