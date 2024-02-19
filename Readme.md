@@ -125,3 +125,4 @@ To send bulk emails from a csv file saved within `./example/example.csv`, run th
 ```bash
 email-sender bulk-email --csv-file "./example/example.csv"
 ```
+
