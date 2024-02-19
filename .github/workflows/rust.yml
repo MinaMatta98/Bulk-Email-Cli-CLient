@@ -91,4 +91,4 @@ jobs:
 
     steps:
       - name: Running Test Workflow
-        uses: MinaMatta98/Bulk-Email-Cli-CLient/.github/workflows/test.yml
+        uses: MinaMatta98/Bulk-Email-Cli-CLient/.github/workflows/test.yml@master
