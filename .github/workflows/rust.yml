@@ -17,9 +17,6 @@ jobs:
           override: true
           profile: minimal
 
-      - name: Set RUSTUP_TOOLCHAIN
-        run: echo "RUSTUP_TOOLCHAIN=nightly" >> $GITHUB_ENV
-
       - name: Perform Build
         run: |
           cargo +nightly build --release
