@@ -17,6 +17,9 @@ jobs:
           override: true
           profile: minimal
 
+      - name: Set RUSTUP_TOOLCHAIN
+        run: echo "RUSTUP_TOOLCHAIN=nightly" >> $GITHUB_ENV
+
       - uses: Swatinem/rust-cache@v2
         with:
           # The prefix cache key, this can be changed to start a new cache manually.
