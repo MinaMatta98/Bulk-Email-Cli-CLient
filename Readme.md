@@ -2,7 +2,7 @@
     <img src="./example/send-mail-7590.svg"/>
 </div>
 
-<h1 style="text-align: center;">
+<h1 align="center">
     Bulk Email Cli Client
 </h1>
 
