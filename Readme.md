@@ -1,3 +1,5 @@
+[![Type](https://img.shields.io/badge/type-CLI-yellow.svg?style=flat-square)](https://www.npmjs.com/package/bulk-mail-cli)
+
 <div align="center">
     <img src="./example/send-mail-7590.svg"/>
 </div>

@@ -1,0 +1,35 @@
+name: Rust Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Rust nightly
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          override: true
+          profile: minimal
+
+      - name: Install system dependencies
+        run: |
+          sudo apt update
+          sudo apt-get install -y \
+          	sudo\
+          	lsb-release\
+          	cmake\
+          	wget\
+          	curl\
+
+      - name: Perform Build
+        run: |
+          cargo build --release
