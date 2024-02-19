@@ -20,13 +20,6 @@ jobs:
       - name: Set RUSTUP_TOOLCHAIN
         run: echo "RUSTUP_TOOLCHAIN=nightly" >> $GITHUB_ENV
 
-  build:
-    runs-on: ubuntu-latest
-    needs: build-env
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: Perform Build
         run: |
           cargo +nightly build --release
