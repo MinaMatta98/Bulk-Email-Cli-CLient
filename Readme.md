@@ -1,5 +1,8 @@
 [![Rust Build](https://github.com/MinaMatta98/Bulk-Email-Cli-CLient/actions/workflows/rust.yml/badge.svg)](https://github.com/MinaMatta98/Bulk-Email-Cli-CLient/actions/workflows/rust.yml)
 
+[![GitHub version](https://img.shields.io/github/v/tag/MinaMatta98/Bulk-Email-Cli-CLient?label=Version)](https://github.com/MinaMatta98/Bulk-Email-Cli-CLient/releases)
+
+
 <div align="center">
     <img src="./example/send-mail-7590.svg"/>
 </div>
