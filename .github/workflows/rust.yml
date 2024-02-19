@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: Set up Rust nightly
         uses: actions-rs/toolchain@v1
         with:
@@ -85,6 +82,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-env
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Perform Build
         run: |
           cargo build --release
@@ -94,6 +94,9 @@ jobs:
     needs: build
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Perform Test
         run: |
           cargo test --release
