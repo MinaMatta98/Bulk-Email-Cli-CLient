@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dark-themed Email</title>
+	<style>
+		body {
+			background-color: #1a1a1a;
+			color: #ffffff;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		h1 {
+			color: #50d3a1;
+		}
+
+		p {
+			font-size: 16px;
+			line-height: 1.5;
+		}
+
+		a {
+			color: #50d3a1;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		.footer {
+			text-align: center;
+			margin-top: 20px;
+			padding-top: 20px;
+			border-top: 1px solid #666666;
+			font-size: 14px;
+			color: #999999;
+		}
+
+		.validation {
+			color: #ffffff;
+			/* White text color */
+			text-align: center;
+			margin: 0;
+		}
+
+		.validation-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: fit-content;
+			margin: auto;
+			/* Set the desired height */
+			width: fit-content;
+			padding: 10px;
+			background-color: #50d3a1;
+			/* Green background color */
+			border-radius: 10px;
+			/* Border radius for rounded corners */
+		}
+
+		.validation-container:hover {
+			cursor: pointer
+		}
+	</style>
+</head>
+
+<body>
+	<div style="display: flex; justify-content: center;">
+		<img src="cid:2335" style="margin: 50px auto 10px auto; width: 100px">
+	</div>
+	<div class="container">
+		<h1 style="text-align: center">Email Sender Template</h1>
+		<p>Thank you for using email-sender. This serves as an example template.</p>
+		<div style="justify-items: center;" onclick="copyToClipboard()">
+			<div class="validation-container">
+				<p style="margin: auto; text-align: center" class="validation" id="text">
+					validation
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		&copy;
+		<a href="">
+			2023 Company PTY LTD.
+		</a>
+		All rights reserved.
+	</div>
+</body>
+
+</html>
