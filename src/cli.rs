@@ -1,8 +1,9 @@
-use clap::{arg, command, Args, Parser, Subcommand};
+use crate::tokens::ReplacementTokens;
+use clap::{arg, command, Parser, Subcommand};
 use paste::paste;
 use serde::{Deserialize, Serialize};
-use std::{path::PathBuf, u64};
 use serde_json::Value;
+use std::{path::PathBuf, u64};
 
 #[derive(Parser)]
 #[command(version, about = "
@@ -61,18 +62,28 @@ macro_rules! commands_struct {
 
     ( $( $no:expr ),* ) => {
             paste! {
-                #[derive(Args, Debug, Serialize, Deserialize)]
-                #[serde(rename_all = "PascalCase")]
+                #[derive(Debug, Serialize, Deserialize, Subcommand, Clone)]
+                #[serde(untagged)]
                 /// Add an attachment to the email with an inline_number
-                pub struct AttachmentCommand {
+                pub enum AttachmentCommand {
+                    #[serde(untagged)]
+                    #[serde(rename_all = "PascalCase")]
+                    Attachments {
                         $(
-                            #[arg(long)]
-                            pub [<attachment_ $no _path>]: Option<PathBuf>,
+                          #[arg(long)]
+                          #[serde(skip_serializing_if = "Option::is_none")]
+                          [< attachment_ $no _path >]: Option<PathBuf>,
+
+                          #[arg(long)]
+                          #[serde(skip_serializing_if = "Option::is_none")]
+                          [< attachment_ $no _inline_content_id >]: Option<Value>,
+
                         )*
-                        $(
-                            #[arg(long)]
-                            pub [<attachment_ $no _inline_content_id>]: Option<Value>,
-                        )*
+
+                          #[serde(flatten)]
+                          #[command(subcommand)]
+                          replacement_tokens: ReplacementTokens,
+                    },
                 }
             }
     };
@@ -94,7 +105,7 @@ pub enum Commands {
 }
 
 /// CSV file headers expected to fit the following
-#[derive(serde::Serialize, serde::Deserialize, clap::Args)]
+#[derive(serde::Serialize, serde::Deserialize, clap::Args, Debug, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct EmailInfo {
     /// Address for the email To header
@@ -113,8 +124,36 @@ pub struct EmailInfo {
 
     /// Optional Inline File Attachment
     #[serde(flatten)]
-    #[command(flatten)]
+    #[command(subcommand)]
     pub attachment: AttachmentCommand,
 }
 
 commands_struct!(10);
+
+#[cfg(test)]
+mod test {
+    use std::error::Error;
+
+    use super::{AttachmentCommand, EmailInfo};
+
+    #[test]
+    fn test_email_structure() -> Result<(), Box<dyn Error>> {
+        let mut reader = csv::Reader::from_path("./example/test.csv")?;
+        let email_info = reader.deserialize::<EmailInfo>();
+
+        for record in email_info.into_iter() {
+            let record = record.unwrap();
+            tracing::info!("\n{}\n", serde_json::to_string_pretty(&record).unwrap());
+            let AttachmentCommand::Attachments {
+                attachment_1_path,
+                attachment_1_inline_content_id,
+                ..
+            } = record.attachment;
+
+            assert!(attachment_1_path.is_some());
+            assert!(attachment_1_inline_content_id.is_some());
+        }
+
+        Ok(())
+    }
+}

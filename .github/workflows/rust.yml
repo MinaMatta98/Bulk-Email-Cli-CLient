@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  build-env:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,15 +20,6 @@ jobs:
           override: true
           profile: minimal
 
-      - name: Install system dependencies
-        run: |
-          sudo apt update
-          sudo apt-get install -y \
-          	sudo\
-          	lsb-release\
-          	cmake\
-          	wget\
-          	curl\
       - uses: Swatinem/rust-cache@v2
         with:
           # The prefix cache key, this can be changed to start a new cache manually.
@@ -90,6 +81,18 @@ jobs:
           # default: "github"
           cache-provider: "github"
 
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Perform Build
         run: |
           cargo build --release
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Perform Test
+        run: |
+          cargo test --release

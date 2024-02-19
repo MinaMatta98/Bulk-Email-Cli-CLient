@@ -127,7 +127,19 @@ macro_rules! email_struct {
                         let from_addr = get_var("SENDER_EMAIL")?;
                         let smtp_relay = get_var("SMTP_RELAY")?;
 
-                        let email = std::fs::read(email_body_location)?;
+                        let mut email = std::fs::read_to_string(email_body_location)?;
+
+                        #[allow(clippy::collapsible_match)]
+                        let AttachmentCommand::Attachments {
+                            $(
+                                    [<attachment_ $no _path>],
+                                    [<attachment_ $no _inline_content_id>],
+                            )*
+                            replacement_tokens
+                        }
+                         = attachment;
+
+                        replacement_tokens.replace_all_substrings(&mut email);
 
                         let mut multi_part = MultiPart::related().singlepart(
                             SinglePart::builder()
@@ -135,37 +147,27 @@ macro_rules! email_struct {
                                 .body(email),
                         );
 
-                        #[allow(clippy::collapsible_match)]
-                        let AttachmentCommand {
-                            $(
-                                [< attachment_ $no _path >],
-                            )*
-                            $(
-                                [<attachment_ $no _inline_content_id>],
-                            )*
-                        } = attachment;
-
                         $(
-                                      if let Some([<attachment_ $no _path>]) = [<attachment_ $no _path>] && &[<attachment_ $no _path>].display().to_string() != "" {
-                                            let attachment = if let Some([<attachment_ $no _inline_val>]) = [<attachment_ $no _inline_content_id>] && [<attachment_ $no _inline_val>] != String::new() {
-                                                Attachment::new_inline(
-                                                        [<attachment_ $no _inline_val>].to_string().replace('"', "")
-                                                )
-                                                .body(
-                                                    std::fs::read(&[< attachment_ $no _path>])?,
-                                                    ContentType::parse(&mime_guess::from_path([< attachment_ $no _path>]).first().unwrap().to_string())?,
-                                                )
+                          if let Some([<attachment_ $no _path>]) = [<attachment_ $no _path>] && &[<attachment_ $no _path>].display().to_string() != "" {
+                                let attachment = if let Some([<attachment_ $no _inline_val>]) = [<attachment_ $no _inline_content_id>] && [<attachment_ $no _inline_val>] != String::new() {
+                                    Attachment::new_inline(
+                                            [<attachment_ $no _inline_val>].as_number().unwrap().to_string()
+                                    )
+                                    .body(
+                                        std::fs::read(&[< attachment_ $no _path>])?,
+                                        ContentType::parse(&mime_guess::from_path([< attachment_ $no _path>]).first().unwrap().to_string())?,
+                                    )
 
-                                            } else {
-                                                Attachment::new([< attachment_ $no _path>].file_name().unwrap().to_str().unwrap().to_string())
-                                                .body(
-                                                    std::fs::read(&[< attachment_ $no _path>])?,
-                                                    ContentType::parse(&mime_guess::from_path([< attachment_ $no _path>]).first().unwrap().to_string())?,
-                                                )
+                                } else {
+                                    Attachment::new([< attachment_ $no _path>].file_name().unwrap().to_str().unwrap().to_string())
+                                    .body(
+                                        std::fs::read(&[< attachment_ $no _path>])?,
+                                        ContentType::parse(&mime_guess::from_path([< attachment_ $no _path>]).first().unwrap().to_string())?,
+                                    )
 
-                                            };
-                                        multi_part = multi_part.singlepart(attachment);
-                                      };
+                                };
+                            multi_part = multi_part.singlepart(attachment);
+                          };
                         )*
 
                         let email = Message::builder()

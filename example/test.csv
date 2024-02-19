@@ -1,0 +1,2 @@
+DeliveryAddress,Subject,RelativeEmailTemplatePath,Attachment1Path,Attachment1InlineContentId,Name,TempCode
+minamatta98@gmail.com,Email Template Tests,./templates/replacement_test.html,./example/send_mail_7590.png,2335,Mina,123456

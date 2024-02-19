@@ -8,6 +8,7 @@ use std::{env::VarError, error::Error, path::PathBuf};
 mod cli;
 mod email;
 mod error;
+mod tokens;
 
 fn get_var(key: &str) -> Result<String, VarError> {
     std::env::var(key).map_err(|e| {

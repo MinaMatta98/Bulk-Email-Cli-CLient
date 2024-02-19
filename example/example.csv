@@ -1,4 +1,5 @@
-DeliveryAddress,Subject,RelativeEmailTemplatePath,Attachment1Path,Attachment1InlineContentId
-minamatta98@gmail.com,Email Template Tests,./templates/email.html,,
-minamatta98@gmail.com,Email Template Tests,./templates/email.html,./example/send_mail_7590.png,2335
-minamatta98@gmail.com,Email Template Tests,./templates/email.html,./example/rust.pdf,
+DeliveryAddress,Subject,RelativeEmailTemplatePath,Attachment1Path,Attachment1InlineContentId,Name,TempCode
+minamatta98@gmail.com,Email Template Tests,./templates/email.html,,,,
+minamatta98@gmail.com,Email Template Tests,./templates/email.html,./example/send_mail_7590.png,2335,,
+minamatta98@gmail.com,Email Template Tests,./templates/email.html,./example/rust.pdf,,,
+minamatta98@gmail.com,Email Template Tests,./templates/replacement_test.html,./example/send_mail_7590.png,2335,Mina,123456

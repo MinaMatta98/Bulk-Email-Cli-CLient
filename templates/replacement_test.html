@@ -1,0 +1,23 @@
+<body>
+	<div style="display: flex; justify-content: center;">
+		<img src="cid:2335" style="margin: 50px auto 10px auto; width: 100px">
+	</div>
+	<div class="container">
+		<h1 style="text-align: center">Email Sender Template</h1>
+			<p>Thank you {{name}} for using email-sender. The verification code is: </p>
+		<div style="justify-items: center;" onclick="copyToClipboard()">
+			<div class="validation-container">
+				<p style="margin: auto; text-align: center" class="validation" id="text">
+						{{temp_code}}
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		&copy;
+		<a href="">
+			2023 Company PTY LTD.
+		</a>
+		All rights reserved.
+	</div>
+</body>
