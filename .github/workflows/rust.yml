@@ -90,7 +90,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run Test Workflow
-        uses: peter-evans/workflow-dispatch@v2
+      - name: Running Test Workflow
+        run: |
+          echo "Starting Test Workflow"
         with:
           workflow: Test
