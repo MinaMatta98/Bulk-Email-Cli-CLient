@@ -1,6 +1,7 @@
-<div style="justify-content: center; display:flex;">
+<div align="center">
     <img src="./example/send-mail-7590.svg"/>
 </div>
+
 <h1 style="text-align: center;">
     Bulk Email Cli Client
 </h1>
