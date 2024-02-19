@@ -77,11 +77,19 @@ email-sender single-email --to-addr "minamatta98@gmail.com" --subject "Email Tes
 
 ##### Scenario 3:
 Send an email to `minamatta98@gmail.com` with the template saved within `./templates/email.html` relative to the current working directory (check with ```bash pwd```).
-This is to also send an inline email attachment located within `./P-Circle.png` corrosponding to an inline content id of 2335.
+This is to also send an inline email attachment located within `./example/send_mail_7590.png` corrosponding to an inline content id of 2335.
 
 ```bash
 email-sender single-email --to-addr "minamatta98@gmail.com" --subject "Email Testing CLI" --email-template "./templates/email.html" --attachment-1-path "./example/send_mail_7590.png" --attachment-1-inline-content-id 2335
 ```
+
+<br/>
+
+##### Result
+
+<div align="center">
+    <img src="./Showcase/Example Email.png"/>
+</div>
 
 <br/>
 <br/>
