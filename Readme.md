@@ -165,7 +165,15 @@ The following example accomplishes the same function as the [single email substi
 > _Note that variables are evaluated separately for each row entry and can be left blank if not needed._
 > _Also note that field names for substitutions can be left empty if not needed. For example, the Name and TempCode header are not required if values are not passed._
 
+Take this as an example email file saved within `./path/to/file.csv`:
+
 ```csv
 DeliveryAddress,Subject,RelativeEmailTemplatePath,Attachment1Path,Attachment1InlineContentId,Name,TempCode
 minamatta98@gmail.com,Email Template Tests,./templates/replacement_test.html,./example/send_mail_7590.png,2335,Mina,123456
+```
+
+Run the following cli command from the shell:
+
+```bash
+email-sender bulk-email --csv-file "./path/to/file.csv"
 ```
