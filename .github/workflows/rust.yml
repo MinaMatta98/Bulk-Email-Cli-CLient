@@ -20,6 +20,20 @@ jobs:
           override: true
           profile: minimal
 
+      - name: Install system dependencies
+        run: |
+          sudo apt update
+          sudo apt-get install -y \
+          	sudo\
+          	lsb-release\
+          	cmake\
+          	wget\
+          	curl\
+
+      - name: Perform Build
+        run: |
+          cargo build --release
+
       - uses: Swatinem/rust-cache@v2
         with:
           # The prefix cache key, this can be changed to start a new cache manually.
@@ -80,28 +94,3 @@ jobs:
           # Can be set to either "github" or "buildjet"
           # default: "github"
           cache-provider: "github"
-
-
-      - name: Cache Rust dependencies
-        uses: actions/cache@v3.0.2
-        with:
-          path: |
-            ~/.cargo
-          key: ${{ runner.os }}-rust-${{ hashFiles('**/Cargo.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-rust-
-  
-
-      - name: Install system dependencies
-        run: |
-          sudo apt update
-          sudo apt-get install -y \
-          	sudo\
-          	lsb-release\
-          	cmake\
-          	wget\
-          	curl\
-
-      - name: Perform Build
-        run: |
-          cargo build --release
