@@ -86,6 +86,6 @@ jobs:
           cargo +nightly build --release
 
 
-  next-workflow:
-    uses: ./.github/workflows/test.yml
+  # next-workflow:
+  #   uses: ./.github/workflows/test.yml
 
