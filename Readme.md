@@ -86,7 +86,9 @@ Send an email to `minamatta98@gmail.com` with the template saved within `./templ
 This is to also send an inline email attachment located within `./example/send_mail_7590.png` corresponding to an inline content id of 2335.
 
 ```bash
-email-sender single-email --to-addr "minamatta98@gmail.com" --subject "Email Testing CLI" --email-template "./templates/email.html" attachments --attachment-1-path "./example/send-mail-7590.svg" --attachment-1-inline-content-id 2335```
+email-sender single-email --to-addr "minamatta98@gmail.com" --subject "Email Testing CLI" --email-template "./templates/email.html" attachments --attachment-1-path "./example/send-mail-7590.svg" --attachment-1-inline-content-id 2335
+```
+
 
 <br/>
 
