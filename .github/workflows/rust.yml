@@ -73,7 +73,6 @@ jobs:
           # Useful for jobs where the matrix is additive e.g. additional Cargo features,
           # or when only runs from `master` should be saved to the cache.
           # default: "true"
-          save-if: ""
           # To only cache runs from `master`:
           save-if: ${{ github.ref == 'refs/heads/master' }}
       
