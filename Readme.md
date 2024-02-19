@@ -13,7 +13,9 @@
 
 An asynchronous [RUST](https://www.rust-lang.org/) based CLI bulk emailing client, built on top of [lettre-rs](https://github.com/lettre/lettre).
 
-### Features:
+
+### Features
+---
 
 |Feature|Description|
 |-------|-----------|
@@ -29,6 +31,7 @@ An asynchronous [RUST](https://www.rust-lang.org/) based CLI bulk emailing clien
 <br/>
 
 ### Instructions:
+---
 
 #### Installation:
 Installation of this tool will require [RUST installation version](https://www.rust-lang.org/tools/install) of 1.70 or newer.
@@ -45,12 +48,13 @@ cargo install --locked --git https://github.com/MinaMatta98/Bulk-Email-Cli-CLien
 <br/>
 
 #### Setting Environmental Variables
+---
 The following environmental variables must be set:
 
 |Variable|Description|
 |-------|-----------|
 |SENDER_EMAIL|Email of the email account sending the Email(s) |
-|SENDER_PASSWORD|Corrosponding password for the email account sending Email(s)|
+|SENDER_PASSWORD|Corrosponding password for the email account sending Email(s).Turn on Less-Secure-Apps to send emails: https://myaccount.google.com |
 |SMTP_RELAY|The SMTP relay corrosponding to the SMTP Gateway of Choice. For example, Gmail uses smtp.gmail.com and AOL uses smtp.aol.com |
 
 <br/>
@@ -59,6 +63,7 @@ The following environmental variables must be set:
 <br/>
 
 #### Send a Single Email
+---
 Refer to [Environmental Variables](#environmental-variables) for setting up environmental variables.
 
 
@@ -102,6 +107,7 @@ email-sender single-email --to-addr "minamatta98@gmail.com" --subject "Email Tes
 <br/>
 
 #### Send Bulk Emails
+---
 All three scenarios are listed within their respective order within the following table.
 
 This will corrospond to the following csv file:
