@@ -84,5 +84,13 @@ jobs:
       - name: Perform Build
         run: |
           cargo +nightly build --release
+
+
+  next-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Test Workflow
+        uses: peter-evans/workflow-dispatch@v2
         with:
           workflow: Test
