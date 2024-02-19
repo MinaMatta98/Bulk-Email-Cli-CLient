@@ -84,21 +84,5 @@ jobs:
       - name: Perform Build
         run: |
           cargo +nightly build --release
-
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build-env
-
-    steps:
-        - name: Checkout repository
-          uses: actions/checkout@v2
-        - uses: actions-rs/toolchain@v1
-          with:
-            toolchain: nightly
-            override: true
-            profile: minimal
-
-        - name: Perform Test
-          run: |
-            cargo +nightly test --release
+        with:
+          workflow: Test
