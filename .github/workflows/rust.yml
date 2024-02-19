@@ -91,7 +91,4 @@ jobs:
 
     steps:
       - name: Running Test Workflow
-        run: |
-          echo "Starting Test Workflow"
-        with:
-          workflow: Test
+        uses: MinaMatta98/Bulk-Email-Cli-CLient/.github/workflows/test.yml
