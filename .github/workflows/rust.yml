@@ -29,11 +29,6 @@ jobs:
           	cmake\
           	wget\
           	curl\
-
-      - name: Perform Build
-        run: |
-          cargo build --release
-
       - uses: Swatinem/rust-cache@v2
         with:
           # The prefix cache key, this can be changed to start a new cache manually.
@@ -94,3 +89,7 @@ jobs:
           # Can be set to either "github" or "buildjet"
           # default: "github"
           cache-provider: "github"
+
+      - name: Perform Build
+        run: |
+          cargo build --release
