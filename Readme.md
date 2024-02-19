@@ -1,5 +1,3 @@
-[![Type](https://img.shields.io/badge/type-CLI-yellow.svg?style=flat-square)](https://www.npmjs.com/package/bulk-mail-cli)
-
 [![Rust Build](https://github.com/MinaMatta98/Bulk-Email-Cli-CLient/actions/workflows/rust.yml/badge.svg)](https://github.com/MinaMatta98/Bulk-Email-Cli-CLient/actions/workflows/rust.yml)
 
 <div align="center">
