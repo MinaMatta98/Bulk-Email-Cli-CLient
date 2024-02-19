@@ -56,17 +56,17 @@ jobs:
           # Determines whether workspace `target` directories are cached.
           # If `false`, only the cargo registry will be cached.
           # default: "true"
-          cache-targets: ""
+          cache-targets: "true"
       
           # Determines if the cache should be saved even when the workflow has failed.
           # default: "false"
-          cache-on-failure: ""
+          cache-on-failure: "false"
       
           # Determines which crates are cached.
           # If `true` all crates will be cached, otherwise only dependent crates will be cached.
           # Useful if additional crates are used for CI tooling.
           # default: "false"
-          cache-all-crates: ""
+          cache-all-crates: "true"
       
           # Determiners whether the cache should be saved.
           # If `false`, the cache is only restored.
@@ -79,7 +79,7 @@ jobs:
           # Specifies what to use as the backend providing cache
           # Can be set to either "github" or "buildjet"
           # default: "github"
-          cache-provider: ""
+          cache-provider: "github"
 
 
       - name: Cache Rust dependencies
