@@ -60,7 +60,7 @@ The following environmental variables must be set:
 
 ### Send a Single Email
 ---
-Refer to [Environmental Variables](#environmental-variables) for setting up environmental variables.
+Refer to [Environmental Variables](#setting-environmental-variables) for setting up environmental variables.
 
 
 #### Scenario 1
